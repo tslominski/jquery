@@ -67,8 +67,8 @@ module.exports = function( grunt ) {
 			files: "test/index.html"
 		},
 		watch: {
-			files: "<config:lint.files>",
-			tasks: "concat lint"
+			files: ["<config:lint.files>", "src/**/*.js"],
+			tasks: "default"
 		},
 		jshint: {
 			options: {
@@ -143,6 +143,8 @@ module.exports = function( grunt ) {
 
 		// sizzle-jquery.js -> sizzle after "EXPOSE", replace window.Sizzle
 		compiled = sizzle.src.replace( "window.Sizzle = Sizzle;", sizzle.api );
+		compiled = compiled.replace(/.function..window..undefined...\{/g, "").replace( /\}...window..;/g, "" );
+
 		verbose.write("Injected sizzle-jquery.js into sizzle.js");
 
 		// Write concatenated source to file
@@ -165,7 +167,8 @@ module.exports = function( grunt ) {
 				name = this.file.dest;
 
 		this.file.src.forEach(function( filepath ) {
-			compiled += file.read( filepath ).replace( /.function..jQuery...\{/g, "" ).replace( /\}...jQuery..;/g, "" );
+			compiled += file.read( filepath );
+      // compiled += file.read( filepath ).replace( /.function..jQuery...\{/g, "" ).replace( /\}...jQuery..;/g, "" );
 		});
 
 		// Embed Date
