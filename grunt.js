@@ -143,7 +143,7 @@ module.exports = function( grunt ) {
 
 		// sizzle-jquery.js -> sizzle after "EXPOSE", replace window.Sizzle
 		compiled = sizzle.src.replace( "window.Sizzle = Sizzle;", sizzle.api );
-		compiled = compiled.replace(/.function..window..undefined...\{/g, "").replace( /\}...window..;/g, "" );
+		// compiled = compiled.replace(/.function..window..undefined...\{/g, "").replace( /\}...window..;/g, "" );
 
 		verbose.write("Injected sizzle-jquery.js into sizzle.js");
 
