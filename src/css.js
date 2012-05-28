@@ -1,5 +1,3 @@
-(function( jQuery ) {
-
 // order is important!
 jQuery.cssExpand = [ "Top", "Right", "Bottom", "Left" ];
 
@@ -492,5 +490,3 @@ jQuery.each({
 		jQuery.cssHooks[ prefix + suffix ].set = setPositiveNumber;
 	}
 });
-
-})( jQuery );

@@ -1,5 +1,3 @@
-(function( jQuery ) {
-
 var fxNow, timerId, iframe, iframeDoc,
 	elemdisplay = {},
 	rfxtypes = /^(?:toggle|show|hide)$/,
@@ -723,5 +721,3 @@ function defaultDisplay( nodeName ) {
 
 	return display;
 }
-
-})( jQuery );
